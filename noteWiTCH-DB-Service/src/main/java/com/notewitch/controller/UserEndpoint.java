@@ -29,6 +29,8 @@ public class UserEndpoint {
 	
 	@GetMapping("/user/{username}")
 	public User getUser(@PathVariable("username") String username) {
+		System.err.println(username);
+		System.err.println(userService.findByUsername(username));
 		return userService.findByUsername(username);
 	}
 	
