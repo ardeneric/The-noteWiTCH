@@ -1,5 +1,6 @@
 package com.notewitch.entity;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
@@ -8,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -18,7 +18,11 @@ import lombok.Data;
 
 @Data
 @Entity
-public class Multimedia {
+public class Multimedia implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5782171387562347247L;
 	@Id
 	@GeneratedValue(generator = "uuid2")
 	@GenericGenerator(name = "uuid2", strategy = "uuid2")

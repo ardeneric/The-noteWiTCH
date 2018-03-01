@@ -4,12 +4,17 @@ import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.notewitch.entity.User;
 import com.notewitch.repository.UserRepository;
 import com.notewitch.service.UserService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
+@Transactional
 public class UserServiceImpl implements UserService {
 	@Autowired
 	UserRepository userRepository;
@@ -19,13 +24,16 @@ public class UserServiceImpl implements UserService {
 		return userRepository.findByUsername(username);
 	}
 
+	@Transactional(readOnly = true)
 	@Override
 	public Stream<User> findAll() {
+		log.debug("Request to retrieve all users");
 		return userRepository.findAll().stream();
 	}
 
 	@Override
 	public Stream<User> findByGroup(String id) {
+		log.debug("Request user by group");
 		return userRepository.findByUserGroupBridgeGroupId(id);
 	}
 
@@ -41,6 +49,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Stream<User> findByProject(String id) {
+		log.debug("Request user by project");
 		return userRepository.findByProjectId(id);
 	}
 
