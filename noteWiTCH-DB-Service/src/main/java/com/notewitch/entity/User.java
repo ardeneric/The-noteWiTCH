@@ -43,10 +43,6 @@ public class User {
 	
 	private String password;
 	
-	private String lat;
-	
-	private String lng; 
-	
 	@OneToMany(mappedBy = "user" ,cascade = CascadeType.ALL)
 	private List<Project> project;
 

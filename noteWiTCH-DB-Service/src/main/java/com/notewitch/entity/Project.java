@@ -58,6 +58,6 @@ public class Project implements Serializable{
 	@JoinColumn(name = "group_id", referencedColumnName = "group_id")
 	private Group group;
 	
-	@OneToMany(mappedBy = "id" ,cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "project" ,cascade = CascadeType.ALL)
 	private List<Multimedia> multimedia;
 }

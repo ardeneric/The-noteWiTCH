@@ -1,5 +1,8 @@
 package com.notewitch.DTO;
 
+import java.util.List;
+
+
 import lombok.Data;
 
 @Data
@@ -19,8 +22,7 @@ public class UserDTO {
 	
 	private String password;
 	
-	private String lat;
+	private List<ProjectDTO> project;
 	
-	private String lng; 
 	
 }

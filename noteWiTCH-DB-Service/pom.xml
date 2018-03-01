@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.notewitch</groupId>
-	<artifactId>noteWiTCH-DB-Service</artifactId>
+	<artifactId>noteWiTCH-DBService</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>noteWiTCH</name>
+	<name>noteWiTCH-DBService</name>
 	<description>Note management application</description>
 
 	<parent>

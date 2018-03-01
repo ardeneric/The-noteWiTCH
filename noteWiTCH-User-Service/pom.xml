@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.notewitch</groupId>
-	<artifactId>noteWiTCH-User-Service</artifactId>
+	<artifactId>noteWiTCH-LocationService</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>noteWiTCH-User-Service</name>
+	<name>noteWiTCH-LocationService</name>
 	<description>Note management application</description>
 
 	<parent>
@@ -39,11 +39,11 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		<dependency>
+		<!-- <dependency>
 		    <groupId>com.google.maps</groupId>
 		    <artifactId>google-maps-services</artifactId>
 		    <version>0.2.6</version>
-		</dependency>
+		</dependency> -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -53,6 +53,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
 		</dependency>
 	</dependencies>
 
