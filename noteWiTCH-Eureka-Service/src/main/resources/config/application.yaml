@@ -11,3 +11,15 @@ eureka:
     fetch-registry: false
     server:
       wait-time-in-ms-when-sync-empty: 0 
+      
+      
+zuul:
+  #Service will be mapped under the /api URI
+  prefix: /api
+  routes:
+    db-service:
+      path: /db-service/**
+      url: http://localhost:8301
+    location-service:
+      path: /location-service/**
+      url: http://localhost:8301
