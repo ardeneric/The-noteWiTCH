@@ -53,12 +53,12 @@ public class UserEndpoint {
 				.collect(Collectors.toList());
 	}
 	
-	@PostMapping("/save")
+	@PostMapping("/user/save")
 	public User saveUser(@RequestBody User user) {
 		return userService.save(user);
 	}
 	
-	@PostMapping("/delete/{username}")
+	@PostMapping("/user/delete/{username}")
 	public void delete(@PathVariable("username") String username) {
 		userService.delete(username);
 	}

@@ -14,7 +14,6 @@ eureka:
       
       
 zuul:
-  #Service will be mapped under the /api URI
   prefix: /api
   routes:
     db-service:
@@ -22,4 +21,4 @@ zuul:
       url: http://localhost:8301
     location-service:
       path: /location-service/**
-      url: http://localhost:8301
+      url: http://localhost:8302

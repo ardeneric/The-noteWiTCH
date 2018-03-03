@@ -1,6 +1,6 @@
 spring:
   application:
-    name: user-service
+    name: location-service
     
 server:
   port: 8302
