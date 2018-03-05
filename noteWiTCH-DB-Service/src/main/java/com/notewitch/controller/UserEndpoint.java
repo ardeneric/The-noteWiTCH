@@ -16,7 +16,7 @@ import com.notewitch.service.UserService;
 
 
 @RestController
-@RequestMapping("/rest/db")
+@RequestMapping("/rest/db/user")
 public class UserEndpoint {
 	
 	@Autowired
@@ -27,7 +27,7 @@ public class UserEndpoint {
 	 * 
 	 * */
 	
-	@GetMapping("/user/{username}")
+	@GetMapping("/{username}")
 	public User getUser(@PathVariable("username") String username) {
 		return userService.findByUsername(username);
 	}
@@ -39,26 +39,26 @@ public class UserEndpoint {
 				.collect(Collectors.toList());
 	}
 	
-	@GetMapping("/user/group/{id}")
+	@GetMapping("/group/{id}")
 	public List<User> getUsersByGroup(@PathVariable("id") String id){
 		return userService
 				.findByGroup(id)
 				.collect(Collectors.toList());
 	}
 	
-	@GetMapping("/user/project/{id}")
+	@GetMapping("/project/{id}")
 	public List<User> getUsersByProject(@PathVariable("id") String id){
 		return userService
 				.findByProject(id)
 				.collect(Collectors.toList());
 	}
 	
-	@PostMapping("/user/save")
+	@PostMapping("/save")
 	public User saveUser(@RequestBody User user) {
 		return userService.save(user);
 	}
 	
-	@PostMapping("/user/delete/{username}")
+	@PostMapping("/delete/{username}")
 	public void delete(@PathVariable("username") String username) {
 		userService.delete(username);
 	}

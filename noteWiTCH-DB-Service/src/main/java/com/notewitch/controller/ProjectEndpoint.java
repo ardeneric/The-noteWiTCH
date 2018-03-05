@@ -15,7 +15,7 @@ import com.notewitch.entity.Project;
 import com.notewitch.service.ProjectService;
 
 @RestController
-@RequestMapping("/rest/db")
+@RequestMapping("/rest/db/project")
 public class ProjectEndpoint {
 
 	@Autowired
@@ -26,7 +26,7 @@ public class ProjectEndpoint {
 	 * 
 	 * */
 	
-	@GetMapping("/project/{id}")
+	@GetMapping("/{id}")
 	public Project getUser(@PathVariable("id") String id) {
 		return projectService.findById(id);
 	}
@@ -38,26 +38,26 @@ public class ProjectEndpoint {
 				.collect(Collectors.toList());
 	}
 	
-	@GetMapping("/project/group/{id}")
+	@GetMapping("/group/{id}")
 	public List<Project> getProjectByGroup(@PathVariable("id") String id){
 		return projectService
 				.findByGroup(id)
 				.collect(Collectors.toList());
 	}
 	
-	@GetMapping("/project/user/{id}")
+	@GetMapping("/user/{id}")
 	public List<Project> getProjecByUser(@PathVariable("id") String id){
 		return projectService
 				.findByUser(id)
 				.collect(Collectors.toList());
 	}
 	
-	@PostMapping("/project/save")
+	@PostMapping("/save")
 	public Project saveProject(@RequestBody Project project) {
 		return projectService.save(project);
 	}
 	
-	@PostMapping("/project/delete/{id}")
+	@PostMapping("/delete/{id}")
 	public void delete(@PathVariable("id") String id) {
 		projectService.delete(id);
 	}

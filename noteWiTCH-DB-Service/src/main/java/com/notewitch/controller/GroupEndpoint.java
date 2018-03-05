@@ -15,7 +15,7 @@ import com.notewitch.entity.Group;
 import com.notewitch.service.GroupService;
 
 @RestController
-@RequestMapping("/rest/db")
+@RequestMapping("/rest/db/group")
 public class GroupEndpoint {
 
 	@Autowired
@@ -26,7 +26,7 @@ public class GroupEndpoint {
 	 * 
 	 * */
 	
-	@GetMapping("/group/{id}")
+	@GetMapping("/{id}")
 	public Group getGroup(@PathVariable("id") String id) {
 		return groupService.findById(id);
 	}
@@ -38,24 +38,24 @@ public class GroupEndpoint {
 				.collect(Collectors.toList());
 	}
 	
-	@GetMapping("/groupd/project/{id}")
+	@GetMapping("/project/{id}")
 	public Group getGroupByProject(@PathVariable("id") String id){
 		return groupService.findByProjectId(id);
 	}
 	
-	@GetMapping("/group/user/{id}")
+	@GetMapping("/user/{id}")
 	public List<Group> getGroupByUser(@PathVariable("id") String id){
 		return groupService
 				.findByUserId(id)
 				.collect(Collectors.toList());
 	}
 	
-	@PostMapping("/group/save")
+	@PostMapping("/save")
 	public Group saveProject(@RequestBody Group group) {
 		return groupService.save(group);
 	}
 	
-	@PostMapping("/group/delete/{id}")
+	@PostMapping("/delete/{id}")
 	public void delete(@PathVariable("id") String id) {
 		groupService.delete(id);
 	}
