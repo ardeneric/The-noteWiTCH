@@ -16,7 +16,7 @@ import com.notewitch.service.UserService;
 
 
 @RestController
-@RequestMapping("/rest/db/user")
+@RequestMapping("/rest/user")
 public class UserEndpoint {
 	
 	@Autowired

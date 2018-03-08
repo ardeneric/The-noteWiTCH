@@ -15,7 +15,7 @@ import com.notewitch.entity.Group;
 import com.notewitch.service.GroupService;
 
 @RestController
-@RequestMapping("/rest/db/group")
+@RequestMapping("/rest/group")
 public class GroupEndpoint {
 
 	@Autowired

@@ -15,7 +15,7 @@ import com.notewitch.entity.Project;
 import com.notewitch.service.ProjectService;
 
 @RestController
-@RequestMapping("/rest/db/project")
+@RequestMapping("/rest/project")
 public class ProjectEndpoint {
 
 	@Autowired
