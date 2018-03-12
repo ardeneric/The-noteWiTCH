@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class Resource {
 
 	@GetMapping("/getCurrentUser")
-	public String getCurrentUser(Principal principal) {
-		return principal.getName();
+	public Principal getCurrentUser(Principal principal) {
+		return principal;
 	}
 }

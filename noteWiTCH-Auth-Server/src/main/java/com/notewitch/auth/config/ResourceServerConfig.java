@@ -34,9 +34,9 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception{
 		auth.parentAuthenticationManager(authenticationManager)
 			.inMemoryAuthentication()
-			.withUser("Peter")
-			.password("peter")
-			.roles("ADMIN");
+			.withUser("Eric")
+			.password("eric")
+			.roles("USER");
 	}
 
 }
