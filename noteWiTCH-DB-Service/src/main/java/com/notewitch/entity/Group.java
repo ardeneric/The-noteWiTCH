@@ -16,6 +16,7 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.GenericGenerator;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
@@ -47,11 +48,11 @@ public class Group implements Serializable {
 	
 	private LocalDateTime modifiedDate;
 	
+	
 	@OneToMany(mappedBy = "group" , cascade = CascadeType.ALL)
-	@JsonBackReference
 	private List<Project> project;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "groupId", cascade = CascadeType.ALL)
-	@JsonBackReference
 	private List<UserGroupBridge> userGroupBridge;
 }
