@@ -22,3 +22,6 @@ zuul:
     location-service:
       path: /location-service/**
       url: http://localhost:8302
+    auth-server:
+      path: /auth-server/**
+      url: http://localhost:8501

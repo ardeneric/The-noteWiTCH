@@ -1,4 +1,4 @@
-package com.notewitch.entity;
+package com.notewitch.auth.entity;
 
 import java.util.List;
 
@@ -43,13 +43,23 @@ public class User {
 	private String address;
 	
 	private String password;
-	
-	@OneToMany(mappedBy = "user" ,cascade = CascadeType.ALL)
-	private List<Project> project;
 
 	@OneToMany(mappedBy = "userId" ,cascade = CascadeType.ALL)
 	private List<UserGroupBridge> userGroupBridge;
 
-	
+	public User(User user) {
+		super();
+		this.id = user.id;
+		this.firstName = user.firstName;
+		this.lastName = user.lastName;
+		this.otherNames = user.otherNames;
+		this.email = user.email;
+		this.username = user.username;
+		this.address = user.address;
+		this.password = user.password;
+		this.userGroupBridge = user.userGroupBridge;
+	}
 
+	public User() {
+	}
 }

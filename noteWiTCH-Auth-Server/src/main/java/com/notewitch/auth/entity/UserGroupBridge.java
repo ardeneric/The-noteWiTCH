@@ -1,4 +1,4 @@
-package com.notewitch.entity;
+package com.notewitch.auth.entity;
 
 import java.io.Serializable;
 
@@ -31,17 +31,17 @@ public class UserGroupBridge implements Serializable {
 	@Column(name = "id")
 	private String id;
 	
-	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "user_id", referencedColumnName = "user_id")
 	private User userId;
 	
-	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "role_id", referencedColumnName = "id")
 	private Role roleId;
 	
-	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "group_id", referencedColumnName = "group_id")
 	private Group groupId;
