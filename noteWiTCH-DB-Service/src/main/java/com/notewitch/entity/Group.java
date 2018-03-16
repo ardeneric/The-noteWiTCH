@@ -15,6 +15,10 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
 
+<<<<<<< HEAD
+=======
+import com.fasterxml.jackson.annotation.JsonBackReference;
+>>>>>>> b23b6159056340ef259c5d293d1ce182376c1817
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
@@ -46,6 +50,7 @@ public class Group implements Serializable {
 	private String modifiedBy;
 	
 	private LocalDateTime modifiedDate;
+	
 	
 	@OneToMany(mappedBy = "group" , cascade = CascadeType.ALL)
 	private List<Project> project;

@@ -54,6 +54,7 @@ public class User {
 	@Fetch(FetchMode.JOIN)
 	@OneToMany(mappedBy = "user" ,cascade = CascadeType.ALL)
 	private List<Project> project;
+	
 
 	@Fetch(FetchMode.JOIN)
 	@OneToMany(mappedBy = "userId" ,cascade = CascadeType.ALL)
