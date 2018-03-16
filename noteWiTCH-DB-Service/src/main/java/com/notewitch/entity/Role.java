@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 
@@ -22,6 +24,7 @@ public class Role {
 	
 	private String name;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "roleId" ,cascade = CascadeType.ALL)
 	private List<UserGroupBridge> userGroupBridge;
 

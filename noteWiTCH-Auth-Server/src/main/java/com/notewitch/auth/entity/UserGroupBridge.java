@@ -11,12 +11,16 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import lombok.Data;
 
 @Data
 @Entity
+@JsonIdentityInfo(
+		  generator = ObjectIdGenerators.PropertyGenerator.class, 
+		  property = "id")
 public class UserGroupBridge implements Serializable {
 
 	/**
@@ -31,17 +35,17 @@ public class UserGroupBridge implements Serializable {
 	@Column(name = "id")
 	private String id;
 	
-	@JsonIgnore
+	
 	@ManyToOne
 	@JoinColumn(name = "user_id", referencedColumnName = "user_id")
 	private User userId;
 	
-	@JsonIgnore
+	
 	@ManyToOne
 	@JoinColumn(name = "role_id", referencedColumnName = "id")
 	private Role roleId;
 	
-	@JsonIgnore
+	
 	@ManyToOne
 	@JoinColumn(name = "group_id", referencedColumnName = "group_id")
 	private Group groupId;

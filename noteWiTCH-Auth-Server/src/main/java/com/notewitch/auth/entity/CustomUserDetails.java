@@ -23,7 +23,7 @@ public class CustomUserDetails extends User implements UserDetails {
 
         return getUserGroupBridge()
                 .stream()
-                .map(userGroupBridge -> new SimpleGrantedAuthority("ROLE_" + userGroupBridge.getRoleId().getName()))
+                .map(userGroupBridge -> new SimpleGrantedAuthority("ROLE_" + "ADMIN"))
                 .collect(Collectors.toList());
     }
 
