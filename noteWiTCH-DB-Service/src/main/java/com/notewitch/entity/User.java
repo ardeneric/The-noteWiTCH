@@ -56,7 +56,7 @@ public class User {
 	private List<Project> project;
 	
 
-	@Fetch(FetchMode.JOIN)
+	//@Fetch(FetchMode.JOIN)
 	@OneToMany(mappedBy = "userId" ,cascade = CascadeType.ALL)
 	private List<UserGroupBridge> userGroupBridge;
 
