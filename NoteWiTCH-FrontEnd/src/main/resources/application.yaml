@@ -1,11 +1,6 @@
 server:
-  port: 8502
-  context-path: /ui
-  session:
-    cookie:
-      name: UISESSION
-      
-
+  port: 9090
+  
 security:
   basic:
     enabled: false
@@ -17,8 +12,3 @@ security:
       user-authorization-uri: http://localhost:8501/auth/oauth/authorize
     resource:
       user-info-uri: http://localhost:8501/auth/getCurrentUser
-      
-      
-spring:
-  thymeleaf:
-    cache: false
