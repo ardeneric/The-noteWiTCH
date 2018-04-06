@@ -44,9 +44,9 @@ security:
       preferTokenInfo: false  
   sessions: ALWAYS 
   
-proxy:
-  auth:
-    routes:
-      db-service: oauth2
-      location-service: oauth2
+#proxy:
+#  auth:
+#    routes:
+#      db-service: oauth2
+#      location-service: oauth2
       
