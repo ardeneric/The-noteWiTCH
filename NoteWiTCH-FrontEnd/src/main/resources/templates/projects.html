@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/links :: head('Groups')"></head>
+<body>
+	<!-- Left Panel -->
+	<div th:replace="fragments/sidebar :: side"></div>
+	<!-- Header-->
+	<div id="right-panel" class="right-panel">
+		<header th:replace="fragments/header :: headerFrag"></header>
+		<!-- /header -->
+
+		<div style = "padding:10px;">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Project Name</th>
+						<th scope="col">Projects Owner</th>
+						<th scope="col">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">1</th>
+						<td>Mark</td>
+						<td>Otto</td>
+						<td>@mdo</td>
+					</tr>
+					<tr>
+						<th scope="row">2</th>
+						<td>Jacob</td>
+						<td>Thornton</td>
+						<td>@fat</td>
+					</tr>
+					<tr>
+						<th scope="row">3</th>
+						<td>Larry</td>
+						<td>the Bird</td>
+						<td>@twitter</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+</body>
+</html>
