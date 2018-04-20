@@ -1,7 +1,5 @@
 package com.notewitch.witch.config;
 
-import java.util.Arrays;
-
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,11 +28,13 @@ public class OauthConfig extends WebSecurityConfigurerAdapter{
 	@Bean
 	CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration configuration = new CorsConfiguration();
-		configuration.setAllowedOrigins(Arrays.asList("http://localhost:8761"));
-		configuration.setAllowedMethods(Arrays.asList("GET","POST"));
+		configuration.addAllowedOrigin("http://localhost:9090");
+		configuration.addAllowedMethod("*");
+		configuration.setAllowCredentials(true);
+		configuration.addAllowedHeader("*");
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		source.registerCorsConfiguration("/**", configuration);
 		return source;
 	}
-	
+
 }

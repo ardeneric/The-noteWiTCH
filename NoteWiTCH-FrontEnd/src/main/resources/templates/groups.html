@@ -10,40 +10,112 @@
 		<header th:replace="fragments/header :: headerFrag"></header>
 		<!-- /header -->
 
-		<div style="padding: 10px;">
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th scope="col">#</th>
-						<th scope="col">Group Name</th>
-						<th scope="col">Group Project Name</th>
-						<th scope="col">Group Project Admin</th>
-						<th scope="col">Action</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<th scope="row">1</th>
-						<td>SR Developers</td>
-						<td>POLICE TRACKER</td>
-						<td>K.A Bussia</td>
-						<td></td>
-					</tr>
-					<tr>
-						<th scope="row">2</th>
-						<td>Switch</td>
-						<td>THE NOTEWICH</td>
-						<td>John Mahama</td>
-						<td></td>
-					</tr>
-				</tbody>
-			</table>
+		<div class="content mt-3" style="padding: 10px;">
+			<div class="animated fadeIn">
+				<div class="row">
+
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-header">
+								<strong class="card-title">My Groups</strong>
+							</div>
+							<div class="card-body">
+								<table id="bootstrap-data-table"
+									class="table table-striped table-bordered">
+									<thead>
+										<tr>
+											<th>#</th>
+											<th>Group Name</th>
+											<th>Group Project Name</th>
+											<th>Group Project Admin</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>Tiger Nixon</td>
+											<td>System Architect</td>
+											<td>Edinburgh</td>
+											<td>$320,800</td>
+										</tr>
+										<tr>
+											<td>Garrett Winters</td>
+											<td>Accountant</td>
+											<td>Tokyo</td>
+											<td>$170,750</td>
+										</tr>
+										<tr>
+											<td>Finn Camacho</td>
+											<td>Support Engineer</td>
+											<td>San Francisco</td>
+											<td>$87,500</td>
+										</tr>
+										<tr>
+											<td>Serge Baldwin</td>
+											<td>Data Coordinator</td>
+											<td>Singapore</td>
+											<td>$138,575</td>
+										</tr>
+										<tr>
+											<td>Brielle Williamson</td>
+											<td>Integration Specialist</td>
+											<td>New York</td>
+											<td>$372,000</td>
+										</tr>
+										<tr>
+											<td>Finn Camacho</td>
+											<td>Support Engineer</td>
+											<td>San Francisco</td>
+											<td>$87,500</td>
+										</tr>
+										<tr>
+											<td>Serge Baldwin</td>
+											<td>Data Coordinator</td>
+											<td>Singapore</td>
+											<td>$138,575</td>
+										</tr>
+										<tr>
+											<td>Zenaida Frank</td>
+											<td>Software Engineer</td>
+											<td>New York</td>
+											<td>$125,250</td>
+										</tr>
+										<tr>
+											<td>Zorita Serrano</td>
+											<td>Software Engineer</td>
+											<td>San Francisco</td>
+											<td>$115,000</td>
+										</tr>
+										<tr>
+											<td>Jennifer Acosta</td>
+											<td>Junior Javascript Developer</td>
+											<td>Edinburgh</td>
+											<td>$75,650</td>
+										</tr>
+										<tr>
+											<td>Cara Stevens</td>
+											<td>Sales Assistant</td>
+											<td>New York</td>
+											<td>$145,600</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div th:replace="fragments/footer :: foot"></div>
+
+	<!-- .animated -->
+
+
 	<script>
-	
-		$.get("http://localhost:8761/api/db-service/rest/user/allUsers",
+		$.get("http://localhost:8761/api/db-service/rest/user/allUsers", crossOrigin: true,
+	            type: 'GET',
+	            xhrFields: { withCredentials: true },
+	            accept: 'application/json',
 				function(data) {
 					console.log(data);
 				});
