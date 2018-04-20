@@ -112,13 +112,33 @@
 
 
 	<script>
-		$.get("http://localhost:8761/api/db-service/rest/user/allUsers", crossOrigin: true,
-	            type: 'GET',
-	            xhrFields: { withCredentials: true },
-	            accept: 'application/json',
+	$(document).ready(function() {
+		
+	       $(function() {
+	              var token = $("meta[name='_csrf']").attr("content");
+	              var header = $("meta[name='_csrf_header']").attr("content");
+	              $(document).ajaxSend(function(e, xhr, options) {
+	                    xhr.setRequestHeader(header, token);
+	              });
+	       });
+	       
+
+			$.ajax({
+			    url: 'http://localhost:8761/api/db-service/rest/user/allUsers',
+			    type: 'GET',
+			    crossDomain: true,
+			    dataType: 'application/json',
+			    success: function() { alert("Success"); },
+			    error: function() { alert('Failed!'); },
+			});
+	       
+	});
+	/* 	$.get("http://localhost:8761/api/db-service/rest/user/allUsers",
 				function(data) {
 					console.log(data);
-				});
+				}); */
+		
+				
 	</script>
 </body>
 </html>
