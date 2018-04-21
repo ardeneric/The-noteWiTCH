@@ -113,23 +113,22 @@
 
 	<script>
 	$(document).ready(function() {
-		
 	       $(function() {
 	              var token = $("meta[name='_csrf']").attr("content");
 	              var header = $("meta[name='_csrf_header']").attr("content");
 	              $(document).ajaxSend(function(e, xhr, options) {
 	                    xhr.setRequestHeader(header, token);
 	              });
+	              
 	       });
 	       
 
 			$.ajax({
 			    url: 'http://localhost:8761/api/db-service/rest/user/allUsers',
 			    type: 'GET',
-			    crossDomain: true,
-			    dataType: 'application/json',
-			    success: function(data) { alert("Success"); },
+			    success: function(data) { alert("Success");console.log(data) },
 			    error: function(data) { alert('Failed!');console.log(data) },
+			    
 			});
 	       
 	});

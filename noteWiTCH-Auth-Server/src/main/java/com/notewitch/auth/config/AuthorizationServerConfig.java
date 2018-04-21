@@ -38,6 +38,9 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 		endpoints
 				.authenticationManager(authenticationManager);
 	}
+	
+
+
 
 
 }
