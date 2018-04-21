@@ -128,17 +128,12 @@
 			    type: 'GET',
 			    crossDomain: true,
 			    dataType: 'application/json',
-			    success: function() { alert("Success"); },
-			    error: function() { alert('Failed!'); },
+			    success: function(data) { alert("Success"); },
+			    error: function(data) { alert('Failed!');console.log(data) },
 			});
 	       
 	});
-	/* 	$.get("http://localhost:8761/api/db-service/rest/user/allUsers",
-				function(data) {
-					console.log(data);
-				}); */
-		
-				
+	
 	</script>
 </body>
 </html>
