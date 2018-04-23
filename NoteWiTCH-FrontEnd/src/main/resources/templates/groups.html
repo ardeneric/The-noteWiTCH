@@ -63,11 +63,10 @@
 			    type: 'GET',
 			    success: function(data) { 
 			    	$('tbody').empty();
-			    	
 			    	var userGroupBridge = data.userGroupBridge;
-			    	console.log(userGroupBridge);
 			    	console.log(data);
 			    	$.each(userGroupBridge, function(i) {
+			    	
 			    		var dt = $('#bootstrap-data-table').dataTable();
 			    		$.each(userGroupBridge[i].groupId.project, function(j) {
 				    		dt.fnAddData({DT_RowClass: 'gradeA',
