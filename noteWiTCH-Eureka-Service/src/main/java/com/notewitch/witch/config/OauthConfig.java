@@ -19,6 +19,7 @@ public class OauthConfig extends WebSecurityConfigurerAdapter{
 			.authorizeRequests()
 			.antMatchers("/eureka/**")
 			.permitAll()
+			//.antMatchers("/api/**").permitAll()
 			.anyRequest()
 			.authenticated();
 	}
