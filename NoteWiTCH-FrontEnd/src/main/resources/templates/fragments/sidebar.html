@@ -9,8 +9,8 @@
 				aria-expanded="false" aria-label="Toggle navigation">
 				<i class="fa fa-bars"></i>
 			</button>
-			<a class="navbar-brand" href="./"> <span
-				th:text="${#authentication?.name} + ' ADMIN'"></span> <!-- <img th:src="@{images/logo.png}" alt="Logo"/> --></a>
+			<a class="navbar-brand" href="./"> <span id="username"
+				th:text="${#authentication?.name}"></span> <!-- <img th:src="@{images/logo.png}" alt="Logo"/> --></a>
 			<a class="navbar-brand hidden" href="./"><img
 				th:src="@{images/logo2.png}" alt="Logo" /></a>
 		</div>

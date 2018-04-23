@@ -31,72 +31,7 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>Tiger Nixon</td>
-											<td>System Architect</td>
-											<td>Edinburgh</td>
-											<td>$320,800</td>
-										</tr>
-										<tr>
-											<td>Garrett Winters</td>
-											<td>Accountant</td>
-											<td>Tokyo</td>
-											<td>$170,750</td>
-										</tr>
-										<tr>
-											<td>Finn Camacho</td>
-											<td>Support Engineer</td>
-											<td>San Francisco</td>
-											<td>$87,500</td>
-										</tr>
-										<tr>
-											<td>Serge Baldwin</td>
-											<td>Data Coordinator</td>
-											<td>Singapore</td>
-											<td>$138,575</td>
-										</tr>
-										<tr>
-											<td>Brielle Williamson</td>
-											<td>Integration Specialist</td>
-											<td>New York</td>
-											<td>$372,000</td>
-										</tr>
-										<tr>
-											<td>Finn Camacho</td>
-											<td>Support Engineer</td>
-											<td>San Francisco</td>
-											<td>$87,500</td>
-										</tr>
-										<tr>
-											<td>Serge Baldwin</td>
-											<td>Data Coordinator</td>
-											<td>Singapore</td>
-											<td>$138,575</td>
-										</tr>
-										<tr>
-											<td>Zenaida Frank</td>
-											<td>Software Engineer</td>
-											<td>New York</td>
-											<td>$125,250</td>
-										</tr>
-										<tr>
-											<td>Zorita Serrano</td>
-											<td>Software Engineer</td>
-											<td>San Francisco</td>
-											<td>$115,000</td>
-										</tr>
-										<tr>
-											<td>Jennifer Acosta</td>
-											<td>Junior Javascript Developer</td>
-											<td>Edinburgh</td>
-											<td>$75,650</td>
-										</tr>
-										<tr>
-											<td>Cara Stevens</td>
-											<td>Sales Assistant</td>
-											<td>New York</td>
-											<td>$145,600</td>
-										</tr>
+										
 									</tbody>
 								</table>
 							</div>
@@ -121,13 +56,30 @@
 	              });
 	              
 	       });
-	       
-
+			var username = $('#username').text();
+			
 			$.ajax({
-			    url: 'http://localhost:8761/api/db-service/rest/user/allUsers',
+			    url: 'http://localhost:8761/api/db-service/rest/user/' + username,
 			    type: 'GET',
-			    success: function(data) { alert("Success");console.log(data) },
-			    error: function(data) { alert('Failed!');console.log(data) },
+			    success: function(data) { 
+			    	$('tbody').empty();
+			    	
+			    	var userGroupBridge = data.userGroupBridge;
+			    	console.log(userGroupBridge);
+			    	console.log(data);
+			    	$.each(userGroupBridge, function(i) {
+			    		var dt = $('#bootstrap-data-table').dataTable();
+			    		$.each(userGroupBridge[i].groupId.project, function(j) {
+				    		dt.fnAddData({DT_RowClass: 'gradeA',
+														0: i+1,  
+														1: userGroupBridge[i].groupId.name, 
+														2: userGroupBridge[i].groupId.project[j].projectName, 
+														3:userGroupBridge[i].groupId.createdBy}, true);
+			    		});
+			         });
+			    
+			    },
+			    error: function(data) { alert('Failed!');},
 			    xhrFields: {
 			        withCredentials: true
 			     }
@@ -135,7 +87,6 @@
 			});
 	       
 	});
-	
 	</script>
 </body>
 </html>
