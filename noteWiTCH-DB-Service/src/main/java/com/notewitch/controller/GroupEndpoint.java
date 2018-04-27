@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,7 +16,7 @@ import com.notewitch.entity.Group;
 import com.notewitch.service.GroupService;
 
 @RestController
-@RequestMapping("/rest/group")
+@RequestMapping(path = "/rest/group", produces = MediaType.APPLICATION_JSON_VALUE)
 public class GroupEndpoint {
 
 	@Autowired
@@ -24,8 +25,8 @@ public class GroupEndpoint {
 	/*
 	 * Group Enpoints for Discovery
 	 * 
-	 * */
-	
+	 * 
+	 */
 	@GetMapping("/{id}")
 	public Group getGroup(@PathVariable("id") String id) {
 		return groupService.findById(id);

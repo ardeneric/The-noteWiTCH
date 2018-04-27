@@ -7,6 +7,8 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Data;
@@ -20,9 +22,6 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class GroupDto implements Serializable {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 7544957935729212550L;
 
 	private String id;
@@ -31,10 +30,12 @@ public class GroupDto implements Serializable {
 	
 	private String createdBy;
 	
+	@DateTimeFormat
 	private LocalDateTime createdDate;
 	
 	private String modifiedBy;
 	
+	@DateTimeFormat
 	private LocalDateTime modifiedDate;
 	
 	private List<ProjectDto> project;

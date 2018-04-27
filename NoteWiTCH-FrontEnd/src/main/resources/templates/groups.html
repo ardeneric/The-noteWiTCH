@@ -77,7 +77,6 @@
 				    		dt.fnSetColumnVis(0, false );
 			    		});
 			         });
-			    
 			    },
 			    error: function(data) { alert('Failed!');},
 			    xhrFields: {
@@ -92,10 +91,7 @@
 		 $('#bootstrap-data-table tbody tr').on('click', function(){
 		        var row = $(this).closest('tr');
 		        var id = $('#bootstrap-data-table').dataTable().fnGetData(row)[0];
-		        xhrFields: {
-			        withCredentials: true
-			     }
-	            window.location = "/group/"+ id;
+	           	window.location = "/group/"+ id;
 		    }); 
 	}
 	</script>
