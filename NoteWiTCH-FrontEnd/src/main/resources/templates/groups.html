@@ -24,7 +24,7 @@
 									class="table table-striped table-bordered">
 									<thead>
 										<tr>
-											<th>#</th>
+											<th>id</th>
 											<th>Group Name</th>
 											<th>Group Project Name</th>
 											<th>Group Project Admin</th>
@@ -64,16 +64,17 @@
 			    success: function(data) { 
 			    	$('tbody').empty();
 			    	var userGroupBridge = data.userGroupBridge;
-			    	console.log(data);
+			    	console.log(data)
 			    	$.each(userGroupBridge, function(i) {
-			    	
 			    		var dt = $('#bootstrap-data-table').dataTable();
 			    		$.each(userGroupBridge[i].groupId.project, function(j) {
 				    		dt.fnAddData({DT_RowClass: 'gradeA',
-														0: i+1,  
-														1: userGroupBridge[i].groupId.name, 
-														2: userGroupBridge[i].groupId.project[j].projectName, 
-														3:userGroupBridge[i].groupId.createdBy}, true);
+				    									0: userGroupBridge[i].groupId.id,
+														1: '<a  onclick="viewProjects(this)">' + userGroupBridge[i].groupId.name + '</a>', 
+														2: '<a  onclick="viewProjects(this)">' + userGroupBridge[i].groupId.project[j].projectName + '</a>', 
+														3:'<a  onclick="viewProjects(this)">' + userGroupBridge[i].groupId.createdBy + '</a>'
+														}, true);
+				    		dt.fnSetColumnVis(0, false );
 			    		});
 			         });
 			    
@@ -86,6 +87,17 @@
 			});
 	       
 	});
+	
+	function viewProjects(e){
+		 $('#bootstrap-data-table tbody tr').on('click', function(){
+		        var row = $(this).closest('tr');
+		        var id = $('#bootstrap-data-table').dataTable().fnGetData(row)[0];
+		        xhrFields: {
+			        withCredentials: true
+			     }
+	            window.location = "/group/"+ id;
+		    }); 
+	}
 	</script>
 </body>
 </html>

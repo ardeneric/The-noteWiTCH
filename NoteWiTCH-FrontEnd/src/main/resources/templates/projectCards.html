@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/links :: head('Groups')"></head>
+<body>
+	<!-- Left Panel -->
+	<div th:replace="fragments/sidebar :: side"></div>
+	<!-- Header-->
+	<div id="right-panel" class="right-panel">
+		<header th:replace="fragments/header :: headerFrag"></header>
+		<!-- /header -->
+		 <div class="col-md-3">
+                        <aside class="profile-nav alt">
+                            <section class="card">
+                                <div class="card-header user-header alt bg-dark">
+                                    <div class="media">
+                                        <a href="#">
+                                            <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;" alt="" src="images/admin.jpg"/>
+                                        </a>
+                                        <div class="media-body">
+                                            <h3 class="text-light display-6">Switch</h3>
+                                            <p>Project Manager</p>
+                                        </div>
+                                    </div>
+                                </div>
+								<p id="idVlas"></p>
+
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <a href="#"> <i class="fa fa-users"></i> Users <span class="badge badge-primary pull-right">10</span></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a href="#"> <i class="fa fa-tasks"></i> Projects <span class="badge badge-danger pull-right">15</span></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a href="#"> <i class="fa fa-bell-o"></i> Notification <span class="badge badge-success pull-right">11</span></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a href="#"> <i class="fa fa-comments-o"></i> Message <span class="badge badge-warning pull-right r-activity">03</span></a>
+                                    </li>
+                                </ul>
+
+                            </section>
+                        </aside>
+                    </div>
+	</div>
+	<div th:replace="fragments/footer :: foot"></div>
+
+</body>
+</html>
