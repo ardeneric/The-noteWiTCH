@@ -26,8 +26,8 @@
 										<tr>
 											<th>id</th>
 											<th>Group Name</th>
-											<th>Group Project Name</th>
-											<th>Group Project Admin</th>
+											<th>Created Date</th>
+											<th>Group Admin</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -67,15 +67,13 @@
 			    	console.log(data)
 			    	$.each(userGroupBridge, function(i) {
 			    		var dt = $('#bootstrap-data-table').dataTable();
-			    		$.each(userGroupBridge[i].groupId.project, function(j) {
 				    		dt.fnAddData({DT_RowClass: 'gradeA',
 				    									0: userGroupBridge[i].groupId.id,
 														1: '<a  onclick="viewProjects(this)">' + userGroupBridge[i].groupId.name + '</a>', 
-														2: '<a  onclick="viewProjects(this)">' + userGroupBridge[i].groupId.project[j].projectName + '</a>', 
+														2: '<a  onclick="viewProjects(this)">' + userGroupBridge[i].groupId.createdDate + '</a>', 
 														3:'<a  onclick="viewProjects(this)">' + userGroupBridge[i].groupId.createdBy + '</a>'
 														}, true);
 				    		dt.fnSetColumnVis(0, false );
-			    		});
 			         });
 			    },
 			    error: function(data) { alert('Failed!');},
@@ -91,7 +89,7 @@
 		 $('#bootstrap-data-table tbody tr').on('click', function(){
 		        var row = $(this).closest('tr');
 		        var id = $('#bootstrap-data-table').dataTable().fnGetData(row)[0];
-	           	window.location = "/group/"+ id;
+	           	window.location.replace("/group?id="+ id +"");
 		    }); 
 	}
 	</script>

@@ -11,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -39,8 +39,8 @@ public class HomeController {
 	}
 
 
-	@GetMapping("/group/{id}")
-	public String projectCards(@PathVariable("id") String id,HttpServletRequest session, Model model) {
+	@GetMapping("/group")
+	public String projectCards(@RequestParam String id,HttpServletRequest session, Model model) {
 		HttpHeaders requestHeaders = new HttpHeaders();
 		Cookie[] cookies = session.getCookies();
 		for (Cookie cookie : cookies) {
