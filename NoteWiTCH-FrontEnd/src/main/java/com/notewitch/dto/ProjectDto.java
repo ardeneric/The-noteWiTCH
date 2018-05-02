@@ -31,4 +31,6 @@ public class ProjectDto {
 	private LocalDateTime modifiedDate;
 	
 	private List<MultimediaDto> multimedia;
+	
+	private UserDto user;
 }

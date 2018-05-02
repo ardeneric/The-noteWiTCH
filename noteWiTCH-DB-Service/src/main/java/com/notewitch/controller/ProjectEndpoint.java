@@ -54,6 +54,7 @@ public class ProjectEndpoint {
 	
 	@PostMapping("/save")
 	public Project saveProject(@RequestBody Project project) {
+		System.err.println(project);
 		return projectService.save(project);
 	}
 	

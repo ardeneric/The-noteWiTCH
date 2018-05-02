@@ -48,7 +48,7 @@ public class Project implements Serializable{
 	
 	private LocalDateTime modifiedDate;
 	
-	@JsonIgnore
+	//@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "user_id", referencedColumnName = "user_id")
 	private User user;
