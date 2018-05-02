@@ -566,6 +566,11 @@ header .form-inline {
 
 #menuToggle2 {
   padding-left: 25px; }
+  
+#projectName:hover{
+	overflow: visible;
+	white-space: normal;
+}
 
 #language-select {
   color: #f1f2f7;

@@ -9,46 +9,56 @@
 	<div id="right-panel" class="right-panel">
 		<header th:replace="fragments/header :: headerFrag"></header>
 		<!-- /header -->
-		 <div th:if = "${#lists.isEmpty(group.project)}" style="text-align: center; padding:20px;">
-		 	<img alt="no-record-found" th:src="@{/images/noRecord.jpg}" style="margin-bottom: 10px;"/>
-		 	<h5 th:text="'Sorry, There are no projects for ' + ${group.name}"></h5>
-		 </div>
-		 <div class="col-md-3" th:each = "project : ${group.project}">
-                        <aside class="profile-nav alt">
-                            <section class="card"  >
-                                <div class="card-header user-header alt bg-dark">
-                                    <div class="media">
-                                        <a href="#">
-                                            <img class="align-self-center rounded-circle mr-3" style="width:50px; height:50px;" alt="" src="images/admin.jpg"/>
-                                        </a>
-                                        <div class="media-body">
-                                            <h3 class="text-light display-6" th:text="${project.projectName}">Switch</h3>
-                                            <p th:text="${'Created by, ' + project.createdBy}">Project Manager</p>
-                                        </div>
-                                    </div>
-                                </div>
-								<p id="idVlas"></p>
+		<div style="text-align: right; font-size: 35px; margin-top: -30px; margin-bottom: 5px;" th:if="${not #lists.isEmpty(group.project)}">
+				<span class="badge badge-danger"
+					th:text="${group.name}"> </span>
+		</div>
+		<div th:if="${#lists.isEmpty(group.project)}"
+			style="text-align: center; padding: 20px;">
+			<img alt="no-record-found" th:src="@{/images/noRecord.jpg}"
+				style="margin-bottom: 10px;" />
+			<h5 th:text="'Sorry, There are no projects for ' + ${group.name}"></h5>
+		</div>
+		
+		<div class="col-md-3" th:each="project : ${group.project}">
+			<aside class="profile-nav alt">
+				<section class="card">
+					<div class="card-header user-header alt bg-dark">
+						<div class="media">
+							<a href="#"> <img
+								class="align-self-center rounded-circle mr-3"
+								style="width: 50px; height: 50px;" alt="" src="images/admin.jpg" />
+							</a>
+							<div class="media-body">
+								<h3 class="text-light display-6" id="projectName" style="width: 95%; white-space:nowrap; overflow: hidden; text-overflow: ellipsis;"
+									th:text="${project.projectName}">Switch</h3>
+								<p th:text="${'Created by, ' + project.createdBy}" style="white-space:nowrap; overflow: hidden; text-overflow: ellipsis;">Project
+									Manager</p>
+							</div>
+						</div>
+					</div>
+					<p id="idVlas"></p>
 
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">
-                                        <a href="#"> <i class="fa fa-users"></i> Users <span class="badge badge-primary pull-right">10</span></a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="#"> <i class="fa fa-tasks"></i> Document <span class="badge badge-danger pull-right" >15</span></a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="#"> <i class="fa fa-bell-o"></i> Notification <span class="badge badge-success pull-right">11</span></a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="#"> <i class="fa fa-comments-o"></i> Message <span class="badge badge-warning pull-right r-activity">03</span></a>
-                                    </li>
-                                </ul>
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item"><a href="#"> <i
+								class="fa fa-users"></i> Users <span
+								class="badge badge-primary pull-right">10</span></a></li>
+						<li class="list-group-item"><a href="#"> <i
+								class="fa fa-tasks"></i> Document <span
+								class="badge badge-danger pull-right">15</span></a></li>
+						<li class="list-group-item"><a href="#"> <i
+								class="fa fa-bell-o"></i> Notification <span
+								class="badge badge-success pull-right">11</span></a></li>
+						<li class="list-group-item"><a href="#"> <i
+								class="fa fa-comments-o"></i> Message <span
+								class="badge badge-warning pull-right r-activity">03</span></a></li>
+					</ul>
 
-                            </section>
-                        </aside>
-                    </div>
+				</section>
+			</aside>
+		</div>
 	</div>
-	
+
 	<div th:replace="fragments/footer :: foot"></div>
 
 </body>
