@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,7 +16,7 @@ import com.notewitch.entity.Project;
 import com.notewitch.service.ProjectService;
 
 @RestController
-@RequestMapping("/rest/project")
+@RequestMapping(path = "/rest/project", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ProjectEndpoint {
 
 	@Autowired
@@ -54,7 +55,6 @@ public class ProjectEndpoint {
 	
 	@PostMapping("/save")
 	public Project saveProject(@RequestBody Project project) {
-		System.err.println(project);
 		return projectService.save(project);
 	}
 	

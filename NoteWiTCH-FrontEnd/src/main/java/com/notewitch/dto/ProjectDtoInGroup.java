@@ -3,12 +3,12 @@
  *******************************************************************************/
 package com.notewitch.dto;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Data;
-
 
 /**
  * @author EricAr
@@ -16,21 +16,23 @@ import lombok.Data;
  */
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserDto {
+public class ProjectDtoInGroup {
 
 	private String id;
 	
-	private String firstName;
+	private String projectName;
 	
-	private String lastName;
+	private String createdBy;
 	
-	private String otherNames;
+	private LocalDateTime createdDate;
 	
-	private String email;
+	private String modifiedBy;
 	
-	private String username;
+	private LocalDateTime modifiedDate;
 	
-	private String address;
+	private List<MultimediaDto> multimedia;
 	
-	private List<ProjectDto> project;
+	private String user;
+	
+	private String group;
 }

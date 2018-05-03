@@ -16,12 +16,16 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import lombok.Data;
 
 @Entity
 @Data
+@JsonIdentityInfo(
+		  generator = ObjectIdGenerators.PropertyGenerator.class, 
+		  property = "id")
 public class Project implements Serializable{
 	
 	/**
@@ -53,7 +57,7 @@ public class Project implements Serializable{
 	@JoinColumn(name = "user_id", referencedColumnName = "user_id")
 	private User user;
 	
-	@JsonIgnore
+	//@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "group_id", referencedColumnName = "group_id")
 	private Group group;

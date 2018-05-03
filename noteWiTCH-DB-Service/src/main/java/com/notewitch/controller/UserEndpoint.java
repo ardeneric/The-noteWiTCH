@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +17,7 @@ import com.notewitch.service.UserService;
 
 
 @RestController
-@RequestMapping("/rest/user")
+@RequestMapping(path = "/rest/user", produces = MediaType.APPLICATION_JSON_VALUE)
 public class UserEndpoint {
 	
 	@Autowired

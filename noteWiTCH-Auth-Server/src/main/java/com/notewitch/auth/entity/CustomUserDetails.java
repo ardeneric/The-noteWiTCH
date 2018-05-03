@@ -9,9 +9,6 @@ import java.util.stream.Collectors;
 
 public class CustomUserDetails extends User implements UserDetails {
 
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = -400286991867358677L;
 
 	public CustomUserDetails(final User user) {

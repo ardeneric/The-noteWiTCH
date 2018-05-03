@@ -33,4 +33,6 @@ public class ProjectDto {
 	private List<MultimediaDto> multimedia;
 	
 	private UserDto user;
+	
+	private GroupDto group;
 }

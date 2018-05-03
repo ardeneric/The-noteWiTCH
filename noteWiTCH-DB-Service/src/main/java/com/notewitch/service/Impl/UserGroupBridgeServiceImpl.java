@@ -19,4 +19,9 @@ public class UserGroupBridgeServiceImpl implements UserGroupBridgeService {
 	public Stream<UserGroupBridge> findByGroup(Group group) {
 		return bridgeRepository.findByGroupId(group);
 	}
+
+	@Override
+	public UserGroupBridge save(UserGroupBridge bridge) {
+		return bridgeRepository.save(bridge);
+	}
 }

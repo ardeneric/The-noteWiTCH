@@ -6,10 +6,12 @@
 	<!-- Left Panel -->
 	<div th:replace="fragments/sidebar :: side"></div>
 	<!-- Header-->
+	
 	<div id="right-panel" class="right-panel">
 		<header th:replace="fragments/header :: headerFrag"></header>
 		<!-- /header -->
-
+		<p hidden="hidden" id="userId"></p>
+		<button style="float: right"  class="btn btn-primary" data-toggle="modal" data-target="#addGroup"><i class="fa fa-desktop"> Add Group</i></button>
 		<div class="content mt-3" style="padding: 10px;">
 			<div class="animated fadeIn">
 				<div class="row">
@@ -41,6 +43,25 @@
 			</div>
 		</div>
 	</div>
+	<div class="modal fade" id="addGroup" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-md" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="mediumModalLabel">Add Project</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <input class="form-control" id="groupName" placeholder="Enter Group Name"/>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-primary" onclick="addGroup()">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 	<div th:replace="fragments/footer :: foot"></div>
 
 	<!-- .animated -->
@@ -63,6 +84,7 @@
 			    type: 'GET',
 			    success: function(data) { 
 			    	$('tbody').empty();
+			    	$('#userId').text(data.id);
 			    	var userGroupBridge = data.userGroupBridge;
 			    	console.log(data)
 			    	$.each(userGroupBridge, function(i) {
@@ -91,6 +113,31 @@
 		        var id = $('#bootstrap-data-table').dataTable().fnGetData(row)[0];
 	           	window.location.replace("/group?id="+ id +"");
 		    }); 
+	}
+	
+	function addGroup(){
+		var gName = $("#groupName").val();
+		var username = $('#username').text();
+		var userId = $('#userId').text();
+		var user = {id: userId}
+		var groupDto = {name:gName, createdBy:username, modifiedBy: username, user:user};
+		$.ajax({
+			 headers: { 
+			        'Accept': 'application/json',
+			        'Content-Type': 'application/json' 
+			    },
+			url: '/addGroup',
+			type: 'POST',
+			data: JSON.stringify(groupDto),
+			dataType: 'json',
+			success: function (data){
+				$('#addProject').modal('hide');
+				location.reload();
+			},
+		 	xhrFields: {
+		        withCredentials: true
+		     }
+		});
 	}
 	</script>
 </body>

@@ -38,5 +38,7 @@ public class GroupDto implements Serializable {
 	@DateTimeFormat
 	private LocalDateTime modifiedDate;
 	
-	private List<ProjectDto> project;
+	private List<ProjectDtoInGroup> project;
+	
+	private UserDto user;
 }

@@ -15,6 +15,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -41,11 +42,13 @@ public class Group implements Serializable {
 	@NotNull
 	private String createdBy;
 	
+	@DateTimeFormat
 	private LocalDateTime createdDate;
 	
 	@NotNull
 	private String modifiedBy;
 	
+	@DateTimeFormat
 	private LocalDateTime modifiedDate;
 	
 	@JsonIgnore

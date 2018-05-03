@@ -16,21 +16,8 @@ import lombok.Data;
  */
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserDto {
-
-	private String id;
-	
-	private String firstName;
-	
-	private String lastName;
-	
-	private String otherNames;
-	
-	private String email;
-	
-	private String username;
-	
-	private String address;
-	
-	private List<ProjectDto> project;
+public class RoleDto {
+	private Integer id;
+	private String name;
+	private List<UserGroupBridgeDto> userGroupBridgeDto;
 }
