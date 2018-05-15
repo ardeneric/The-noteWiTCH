@@ -6,12 +6,12 @@ package com.notewitch.witch;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertNotNull;
 
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -24,6 +24,7 @@ import com.notewitch.repository.UserRepository;
  */
 @RunWith(SpringRunner.class)
 @DataJpaTest
+@AutoConfigureTestDatabase(replace= AutoConfigureTestDatabase.Replace.NONE)
 public class UserRepositoryTests {
 	
     @Autowired
@@ -31,10 +32,9 @@ public class UserRepositoryTests {
  
     @Test
     public void findByUsernameContaining() {
-        Stream<User> user = userRepository.findByUsernameContaining("ard");
+        List<User> user = userRepository.findByUsernameContaining("gk");
         assertNotNull(user);
-        System.err.println("this is the user" + user.collect(Collectors.toList()));
-        /*assertThat(user.collect(Collectors.toList()).get(0).getUsername().equals("arden"));*/
+        assertThat(user.get(0).getUsername().equals("gknanor"));
     
     }
  

@@ -33,6 +33,11 @@ public class UserEndpoint {
 		return userService.findByUsername(username);
 	}
 	
+	@GetMapping("/search/{username}")
+	public List<User> searchUser(@PathVariable("username") String username) {
+		return userService.findByUsernameContaining(username);
+	}
+	
 	@GetMapping("/allUsers")
 	public List<User> getAllUsers(){
 		return userService

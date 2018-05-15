@@ -77,7 +77,7 @@ public class Resource {
 		HttpEntity<?> requestEntityTwo = new HttpEntity<>(bridgeDto, requestHeaders);
 		String bridgeUrl = "http://localhost:8761/api/db-service/rest/bridge/save";
 		UriComponentsBuilder builderTwo = UriComponentsBuilder.fromHttpUrl(bridgeUrl);
-		ResponseEntity<UserGroupBridgeDto> responseTwo = restTemplate.exchange(builderTwo.toUriString(), HttpMethod.POST, requestEntityTwo, UserGroupBridgeDto.class);
+		restTemplate.exchange(builderTwo.toUriString(), HttpMethod.POST, requestEntityTwo, UserGroupBridgeDto.class);
 		return responseOne.getBody();
 	}
 }

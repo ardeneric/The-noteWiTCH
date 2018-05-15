@@ -604,5 +604,11 @@ header .form-inline {
 .message-show + .dropdown-menu,
 .language-show + .dropdown-menu {
   display: block; }
+  
+.state:hover{
+	background-color: blue;
+	color: white;
+}
+
 
 /*# sourceMappingURL=style.css.map */

@@ -1,5 +1,6 @@
 package com.notewitch.service.Impl;
 
+import java.util.List;
 import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +52,11 @@ public class UserServiceImpl implements UserService {
 	public Stream<User> findByProject(String id) {
 		log.debug("Request user by project");
 		return userRepository.findByProjectId(id);
+	}
+
+	@Override
+	public List<User> findByUsernameContaining(String username) {
+		return userRepository.findByUsernameContaining(username);
 	}
 
 }
