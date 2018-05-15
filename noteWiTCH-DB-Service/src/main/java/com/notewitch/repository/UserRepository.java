@@ -10,4 +10,5 @@ public interface UserRepository extends JpaRepository<User, String>{
 	public User findByUsername(String username);
 	public Stream<User> findByProjectId(String id);
 	public Stream<User> findByUserGroupBridgeGroupId(String id);
+	public Stream<User> findByUsernameContaining(String username);
 }
