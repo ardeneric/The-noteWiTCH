@@ -14,6 +14,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -79,5 +80,22 @@ public class Resource {
 		UriComponentsBuilder builderTwo = UriComponentsBuilder.fromHttpUrl(bridgeUrl);
 		restTemplate.exchange(builderTwo.toUriString(), HttpMethod.POST, requestEntityTwo, UserGroupBridgeDto.class);
 		return responseOne.getBody();
+	}
+			
+	@GetMapping("/addUser")
+	public UserGroupBridgeDto userGroupBridgeDto(@RequestBody UserGroupBridgeDto userGroupBridgeDto,HttpServletRequest session) {
+		System.err.println(userGroupBridgeDto);
+		HttpHeaders requestHeaders = new HttpHeaders();
+		Cookie[] cookies = session.getCookies();
+		for (Cookie cookie : cookies) {
+			requestHeaders.add(HttpHeaders.COOKIE, cookie.getName() + "=" + cookie.getValue());
+		}
+		
+		HttpEntity<?> requestEntityOne = new HttpEntity<>(userGroupBridgeDto, requestHeaders);
+		String bridgeUrl = "http://localhost:8761/api/db-service/rest/bridge/save";
+		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(bridgeUrl);
+		ResponseEntity<UserGroupBridgeDto> responseOne = restTemplate.exchange(builder.toUriString(), HttpMethod.POST, requestEntityOne, UserGroupBridgeDto.class);
+		return responseOne.getBody();
+		
 	}
 }

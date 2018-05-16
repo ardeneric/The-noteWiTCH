@@ -109,20 +109,20 @@
 					</button>
 				</div>
 				<div class="modal-body">
+					<p id="clickedUsername" hidden="hidden"></p>
 					<input class="form-control" name="incomingUser" id="incomingUser"
 						placeholder="Enter Username" data-autocomplete-autofocus=""
 						autocomplete="off" spellcheck="false" />
 					<div class="autocomplete-results" hidden="hidden" id="resultDiv">
 						<ul id="result">
-							<li></li>
+							<li><span id="userId"></span></li>
 						</ul>
 					</div>
 					<div class="dropdown">
 						<button class="btn dropdown-toggle status" role="button"
 							id="roleOptions" data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false" style="margin-top: 20px;">
-							<span style="font-size: 12px">Role: <span id="choose-role"
-								style="font-size: 12px">Admin</span></span>
+							<span id="choose-role" style="font-size: 12px">Choose a role</span>
 						</button>
 
 						<div class="dropdown-menu" aria-labelledby="roleOptions">
@@ -158,32 +158,68 @@
 		
 		$('.state').on('click',  function() {
 			   $('#choose-role').text($(this).text());
+			   var statusId = $(this).attr('id');
+			   $('#choose-role').val(statusId);
+			   console.log(statusId);
 			 });
 		
 		$('#incomingUser').on('input',  function() {
 			var username = $('#incomingUser').val();
-			$.ajax({
-				headers : {
-					'Accept' : 'application/json',
-					'Content-Type' : 'application/json'
-				},
-				url : 'http://localhost:8761/api/db-service/rest/user/search/' + username,
-				type : 'GET',
-				dataType : 'json',
-				success : function(data) {
-					//location.reload();
-					$("#result").empty();
-					$('#resultDiv').removeAttr('hidden');
-					$.each(data, function(i, item) {
-						$("#result").append(
-								$('<li/>').addClass('list-group-item').text(item.firstName)).addClass('list-group');
-					})
-				},
-				xhrFields : {
-					withCredentials : true
-				}
-			});
+			if(username != ""){
+				$.ajax({
+					headers : {
+						'Accept' : 'application/json',
+						'Content-Type' : 'application/json'
+					},
+					url : 'http://localhost:8761/api/db-service/rest/user/search/' + username,
+					type : 'GET',
+					dataType : 'json',
+					success : function(data) {
+						$("#result").empty();
+						$('#resultDiv').removeAttr('hidden');
+						$.each(data, function(i, item) {
+							if((item.username).includes(username)){
+								var foundUsername = item.username
+								var foundUsernameEdited = item.username.fontcolor("#808080");
+								var inputUsername = username.fontcolor("black").bold();
+								var resultEdited = foundUsername.replace(username, inputUsername);
+								var finalResult = foundUsernameEdited.replace(foundUsername,resultEdited);
+								$("#result").append(
+										$('<li onClick="compleUsername(this)"/>').addClass('list-group-item')
+										.html(finalResult).append($('<span hidden="hidden" id="userId"/>')
+												.text(item.id))).addClass('list-group');
+								
+								 if(item.username == username){
+									var id = $("#userId").text();
+									$('#clickedUsername').text(id);
+									$('#resultDiv').attr('hidden','hidden');
+								} 
+							}
+						})
+					},
+					xhrFields : {
+						withCredentials : true
+					}
+				});
+			}else{
+				$("#result").empty();
+				$('#resultDiv').removeAttr('hidden');
+			}
+		
 		 }); 
+		
+		function compleUsername(e){
+			var i = $(e).closest('li');
+			var j = $(i).find('span');
+			var userId = $(j).text();
+			$('#clickedUsername').text(userId);
+			
+			var i = $('.list-group-item').closest('li');
+			var user = $(i).find('font');
+			var username = $(user)[0].innerText;
+			$('#incomingUser').val(username);
+			$('#resultDiv').attr('hidden','hidden');
+		}
 		
 
 		function addProject() {
@@ -221,24 +257,36 @@
 			}
 		}
 		
-		
-		
 		 function addUser() {
-			var userame = $("#addUser").find('input[name="incomingUser"]').val();
+			var incominUser = $("#addUser").find('input[name="incomingUser"]').val();
 			var username = $('#username').val();
 			var groupId = $('#groupId').text();
+			
+			var userId = $('#clickedUsername').text();
+			var roleId = $('#choose-role').val();
+			
 			var group = {
 				id : groupId
 			}
-			
+			var user = {
+				id: userId
+			}
+			var role = {
+				id: roleId
+			} 
+			var userGroupBridgeDto = {
+					userId : user,
+					groupId : group,
+					roleId : role
+			}
 			$.ajax({
 				headers : {
 					'Accept' : 'application/json',
 					'Content-Type' : 'application/json'
 				},
-				url : '/addProject',
-				type : 'POST',
-				data : JSON.stringify(projectDto),
+				url : '/addUser',
+				type : 'GET',
+				data : JSON.stringify(userGroupBridgeDto),
 				dataType : 'json',
 				success : function(data) {
 					$('#addUser').modal('hide');
@@ -249,7 +297,6 @@
 				}
 			});
 		}
-		
 	</script>
 
 </body>
