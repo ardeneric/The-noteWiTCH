@@ -109,7 +109,7 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<p id="clickedUsername" hidden="hidden"></p>
+					<p id="clickedUsernameId" hidden="hidden"></p>
 					<input class="form-control" name="incomingUser" id="incomingUser"
 						placeholder="Enter Username" data-autocomplete-autofocus=""
 						autocomplete="off" spellcheck="false" />
@@ -160,7 +160,6 @@
 			   $('#choose-role').text($(this).text());
 			   var statusId = $(this).attr('id');
 			   $('#choose-role').val(statusId);
-			   console.log(statusId);
 			 });
 		
 		$('#incomingUser').on('input',  function() {
@@ -191,7 +190,7 @@
 								
 								 if(item.username == username){
 									var id = $("#userId").text();
-									$('#clickedUsername').text(id);
+									$('#clickedUsernameId').text(id);
 									$('#resultDiv').attr('hidden','hidden');
 								} 
 							}
@@ -212,9 +211,9 @@
 			var i = $(e).closest('li');
 			var j = $(i).find('span');
 			var userId = $(j).text();
-			$('#clickedUsername').text(userId);
+			$('#clickedUsernameId').text(userId);
 			
-			var i = $('.list-group-item').closest('li');
+			var i = $(e).closest('li');
 			var user = $(i).find('font');
 			var username = $(user)[0].innerText;
 			$('#incomingUser').val(username);
@@ -262,30 +261,28 @@
 			var username = $('#username').val();
 			var groupId = $('#groupId').text();
 			
-			var userId = $('#clickedUsername').text();
+			var userId = $('#clickedUsernameId').text();
 			var roleId = $('#choose-role').val();
 			
-			var group = {
-				id : groupId
-			}
-			var user = {
-				id: userId
-			}
-			var role = {
-				id: roleId
-			} 
+				
 			var userGroupBridgeDto = {
-					userId : user,
-					groupId : group,
-					roleId : role
-			}
-			$.ajax({
+					userId : {
+						id : userId
+					},
+					groupId : {
+						id : groupId
+					},
+					roleId : {
+						id : roleId
+					}
+				}
+				$.ajax({
 				headers : {
 					'Accept' : 'application/json',
 					'Content-Type' : 'application/json'
 				},
 				url : '/addUser',
-				type : 'GET',
+				type : 'POST',
 				data : JSON.stringify(userGroupBridgeDto),
 				dataType : 'json',
 				success : function(data) {

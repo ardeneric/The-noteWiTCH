@@ -16,7 +16,10 @@ public class OauthConfig extends WebSecurityConfigurerAdapter{
 			.antMatchers("/login**","/static/**")
 			.permitAll()
 			.anyRequest()
-			.authenticated();
+			.authenticated()
+			.and()
+			.logout()
+            .logoutSuccessUrl("http://localhost:8501/auth/exit");;
 			
 	}
 	
