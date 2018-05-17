@@ -37,7 +37,11 @@ public class HomeController {
 	public String projects() {
 		return "projects";
 	}
-
+	
+	@GetMapping("/multimedia")
+	public String multimedia() {
+		return "multimedia";
+	}
 
 	@GetMapping("/group")
 	public String projectCards(@RequestParam String id,HttpServletRequest session, Model model) {

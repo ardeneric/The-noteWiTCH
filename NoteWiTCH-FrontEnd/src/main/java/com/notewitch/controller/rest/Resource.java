@@ -84,7 +84,6 @@ public class Resource {
 			
 	@PostMapping("/addUser")
 	public UserGroupBridgeDto userGroupBridgeDto(@RequestBody UserGroupBridgeDto userGroupBridgeDto,HttpServletRequest session) {
-		System.err.println(userGroupBridgeDto);
 		HttpHeaders requestHeaders = new HttpHeaders();
 		Cookie[] cookies = session.getCookies();
 		for (Cookie cookie : cookies) {
