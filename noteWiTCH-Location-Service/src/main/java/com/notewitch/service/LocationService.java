@@ -10,8 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.notewitch.DTO.GeocodingResult;
-import com.notewitch.DTO.MapProperties;
+import com.notewitch.dto.GeocodingResult;
+import com.notewitch.dto.MapProperties;
 
 import lombok.RequiredArgsConstructor;
 

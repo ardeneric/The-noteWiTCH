@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 import org.springframework.web.client.RestTemplate;
 
-import com.notewitch.DTO.MapProperties;
+import com.notewitch.dto.MapProperties;
 
 
 @EnableDiscoveryClient

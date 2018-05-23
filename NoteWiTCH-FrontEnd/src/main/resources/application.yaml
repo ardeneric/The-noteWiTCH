@@ -12,3 +12,8 @@ security:
       user-authorization-uri: http://localhost:8501/auth/oauth/authorize
     resource:
       user-info-uri: http://localhost:8501/auth/getCurrentUser
+      
+spring:
+  http:
+    multipart:
+      max-file-size: 5000KB

@@ -1,6 +1,3 @@
-/*******************************************************************************
- * CONFIDENTIAL
- *******************************************************************************/
 package com.notewitch.entity;
 
 import java.util.List;
@@ -16,13 +13,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
-/**
- * @author EricAr
- *
- */
+
 @Data
 @Entity
-public class Role {
+public class UserGroupRole {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,7 +25,7 @@ public class Role {
 	private String name;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "roleId" ,cascade = CascadeType.ALL)
-	private List<User> user;
+	@OneToMany(mappedBy = "userGroupRoleId" ,cascade = CascadeType.ALL)
+	private List<UserGroupBridge> userGroupBridge;
 
 }

@@ -1,4 +1,4 @@
-package com.notewitch.DTO;
+package com.notewitch.dto;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

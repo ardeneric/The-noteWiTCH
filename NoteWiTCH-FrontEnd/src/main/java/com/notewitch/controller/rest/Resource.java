@@ -14,14 +14,15 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.notewitch.dto.GroupDto;
+import com.notewitch.dto.MultimediaDto;
 import com.notewitch.dto.ProjectDto;
 import com.notewitch.dto.RoleDto;
 import com.notewitch.dto.UserGroupBridgeDto;
@@ -94,6 +95,26 @@ public class Resource {
 		String bridgeUrl = "http://localhost:8761/api/db-service/rest/bridge/save";
 		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(bridgeUrl);
 		ResponseEntity<UserGroupBridgeDto> responseOne = restTemplate.exchange(builder.toUriString(), HttpMethod.POST, requestEntityOne, UserGroupBridgeDto.class);
+		return responseOne.getBody();
+		
+	}
+	
+	@PostMapping("/addMultimedia")
+	public MultimediaDto multimediaDto(@RequestBody MultimediaDto dto,@RequestBody MultipartFile file,HttpServletRequest session){
+		System.err.println(dto);
+		dto.setModifiedDate(LocalDateTime.now());
+		dto.setCreatedDate(LocalDateTime.now());
+		
+		HttpHeaders requestHeaders = new HttpHeaders();
+		Cookie[] cookies = session.getCookies();
+		for (Cookie cookie : cookies) {
+			requestHeaders.add(HttpHeaders.COOKIE, cookie.getName() + "=" + cookie.getValue());
+		}
+		
+		HttpEntity<?> requestEntityOne = new HttpEntity<>(dto, requestHeaders);
+		String bridgeUrl = "http://localhost:8761/api/db-service/rest/multimedia/save";
+		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(bridgeUrl);
+		ResponseEntity<MultimediaDto> responseOne = restTemplate.exchange(builder.toUriString(), HttpMethod.POST, requestEntityOne, MultimediaDto.class);
 		return responseOne.getBody();
 		
 	}

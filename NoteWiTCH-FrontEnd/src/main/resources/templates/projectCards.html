@@ -56,7 +56,7 @@
 						<li class="list-group-item"><a href="#"> <i
 								class="fa fa-users"></i> Users <span
 								class="badge badge-primary pull-right">10</span></a></li>
-						<li class="list-group-item"><a th:href="@{../multimedia}"> <i
+						<li class="list-group-item"><a th:href="@{'../multimedia?projectId=' + ${project.id}}"> <i
 								class="fa fa-tasks"></i> Document <span
 								class="badge badge-danger pull-right">15</span></a></li>
 						<li class="list-group-item"><a href="#"> <i
@@ -229,7 +229,7 @@
 				id : groupId
 			}
 			
-			if(username == null){
+			if(username != null){
 				var projectDto = {
 						projectName : pName,
 						createdBy : username,
@@ -258,7 +258,7 @@
 		
 		 function addUser() {
 			var incominUser = $("#addUser").find('input[name="incomingUser"]').val();
-			var username = $('#username').val();
+			var username = $('#username').text();
 			var groupId = $('#groupId').text();
 			
 			var userId = $('#clickedUsernameId').text();

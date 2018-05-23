@@ -39,8 +39,8 @@ public class UserGroupBridge implements Serializable {
 	private User userId;
 	
 	@ManyToOne
-	@JoinColumn(name = "role_id", referencedColumnName = "id")
-	private Role roleId;
+	@JoinColumn(name = "userGroupRole_id", referencedColumnName = "id")
+	private UserGroupRole userGroupRoleId;
 	
 	@ManyToOne
 	@JoinColumn(name = "group_id", referencedColumnName = "group_id")

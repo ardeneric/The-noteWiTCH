@@ -8,6 +8,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
@@ -60,7 +62,10 @@ public class User implements Serializable{
 	@Fetch(FetchMode.JOIN)
 	@OneToMany(mappedBy = "userId" ,cascade = CascadeType.ALL)
 	private List<UserGroupBridge> userGroupBridge;
-
+	
+	@ManyToOne
+	@JoinColumn(name = "role_id", referencedColumnName = "id")
+	private Role roleId;
 
 	public User(User user) {
 		this.id = user.id;
@@ -72,6 +77,7 @@ public class User implements Serializable{
 		this.address = user.address;
 		this.password = user.password;
 		this.userGroupBridge = user.userGroupBridge;
+		this.roleId = user.roleId;
 	}
 	
 	public User() {

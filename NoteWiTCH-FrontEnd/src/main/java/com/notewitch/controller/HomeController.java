@@ -39,7 +39,8 @@ public class HomeController {
 	}
 	
 	@GetMapping("/multimedia")
-	public String multimedia() {
+	public String multimedia(@RequestParam String projectId, Model model) {
+		model.addAttribute("projectId", projectId);
 		return "multimedia";
 	}
 

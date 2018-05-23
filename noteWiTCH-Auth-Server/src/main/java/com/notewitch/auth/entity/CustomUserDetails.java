@@ -1,11 +1,12 @@
 package com.notewitch.auth.entity;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
-import java.util.Collection;
-import java.util.stream.Collectors;
 
 public class CustomUserDetails extends User implements UserDetails {
 
@@ -17,11 +18,10 @@ public class CustomUserDetails extends User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-
-        return getUserGroupBridge()
-                .stream()
-                .map(userGroupBridge -> new SimpleGrantedAuthority("ROLE_" + "ADMIN"))
-                .collect(Collectors.toList());
+    	
+    	List<SimpleGrantedAuthority> authorities = new ArrayList<SimpleGrantedAuthority>();
+		authorities.add(new SimpleGrantedAuthority(getRoleId().getName()));
+		return authorities;
     }
 
     @Override

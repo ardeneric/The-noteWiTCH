@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import com.notewitch.DTO.UserDTO;
+import com.notewitch.dto.UserDTO;
 import com.notewitch.service.LocationService;
 
 import lombok.RequiredArgsConstructor;

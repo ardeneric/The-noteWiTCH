@@ -1,4 +1,4 @@
-package com.notewitch.DTO;
+package com.notewitch.dto;
 
 import java.io.Serializable;
 import java.util.ArrayList;

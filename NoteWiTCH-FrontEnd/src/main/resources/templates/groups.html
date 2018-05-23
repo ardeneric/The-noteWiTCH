@@ -86,7 +86,6 @@
 			    	$('tbody').empty();
 			    	$('#userId').text(data.id);
 			    	var userGroupBridge = data.userGroupBridge;
-			    	console.log(data)
 			    	$.each(userGroupBridge, function(i) {
 			    		var dt = $('#bootstrap-data-table').dataTable();
 				    		dt.fnAddData({DT_RowClass: 'gradeA',

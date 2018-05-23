@@ -1,10 +1,12 @@
+/*******************************************************************************
+ * CONFIDENTIAL
+ *******************************************************************************/
 package com.notewitch.auth.entity;
 
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,7 +16,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
-
+/**
+ * @author EricAr
+ *
+ */
 @Data
 @Entity
 public class Role {
@@ -26,7 +31,7 @@ public class Role {
 	private String name;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "roleId" ,cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private List<UserGroupBridge> userGroupBridge;
+	@OneToMany(mappedBy = "roleId" ,cascade = CascadeType.ALL)
+	private List<User> user;
 
 }

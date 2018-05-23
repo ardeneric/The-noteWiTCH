@@ -1,19 +1,15 @@
-package com.notewitch.DTO;
+package com.notewitch.dto;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import lombok.Data;
 
 @Data
-public class MultimediaDTO {
-	
+public class ProjectDTO {
 	private String id;
-
-	private Byte[] image;
 	
-	private String text;
-	
-	private String location;
+	private String projectName;
 	
 	private String createdBy;
 	
@@ -22,4 +18,6 @@ public class MultimediaDTO {
 	private String modifiedBy;
 	
 	private LocalDateTime modifiedDate;
+	
+	private List<MultimediaDTO> multimedia;
 }

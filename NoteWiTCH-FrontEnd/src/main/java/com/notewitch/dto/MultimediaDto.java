@@ -34,4 +34,6 @@ public class MultimediaDto {
 	private String modifiedBy;
 	
 	private LocalDateTime modifiedDate;
+	
+	private ProjectDto project;
 }

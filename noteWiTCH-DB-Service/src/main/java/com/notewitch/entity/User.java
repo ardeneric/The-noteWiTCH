@@ -7,6 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
@@ -59,6 +61,10 @@ public class User {
 	//@Fetch(FetchMode.JOIN)
 	@OneToMany(mappedBy = "userId" ,cascade = CascadeType.ALL)
 	private List<UserGroupBridge> userGroupBridge;
+	
+	@ManyToOne
+	@JoinColumn(name = "role_id", referencedColumnName = "id")
+	private Role roleId;
 
 	
 
