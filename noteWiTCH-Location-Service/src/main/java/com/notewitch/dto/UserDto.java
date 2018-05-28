@@ -6,7 +6,7 @@ import java.util.List;
 import lombok.Data;
 
 @Data
-public class UserDTO {
+public class UserDto {
 	
 	private String id;
 	
@@ -22,7 +22,7 @@ public class UserDTO {
 	
 	private String password;
 	
-	private List<ProjectDTO> project;
+	private List<ProjectDto> project;
 	
 	
 }

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import com.notewitch.dto.UserDTO;
+import com.notewitch.dto.UserDto;
 import com.notewitch.service.LocationService;
 
 import lombok.RequiredArgsConstructor;
@@ -30,16 +30,16 @@ public class Resource {
     private RestTemplate loadBalanced;
 	
 	@GetMapping("/allUsers")
-	public UserDTO[] getUsers(){
-		ResponseEntity<UserDTO[]> response = loadBalanced.getForEntity("http://db-service/rest/db/allUsers", UserDTO[].class);
+	public UserDto[] getUsers(){
+		ResponseEntity<UserDto[]> response = loadBalanced.getForEntity("http://db-service/rest/db/allUsers", UserDto[].class);
 		return response.getBody();
 	}
 	
 	
 	@GetMapping("/{username}")
-	public UserDTO getUser(@PathVariable("username") String username) {
-		ResponseEntity<UserDTO> response = loadBalanced.getForEntity("http://db-service/rest/db/user/" + username,
-				UserDTO.class);
+	public UserDto getUser(@PathVariable("username") String username) {
+		ResponseEntity<UserDto> response = loadBalanced.getForEntity("http://db-service/rest/db/user/" + username,
+				UserDto.class);
 		return response.getBody();
 	}
 		

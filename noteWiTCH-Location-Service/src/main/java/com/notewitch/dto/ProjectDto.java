@@ -6,7 +6,7 @@ import java.util.List;
 import lombok.Data;
 
 @Data
-public class ProjectDTO {
+public class ProjectDto {
 	private String id;
 	
 	private String projectName;
@@ -19,5 +19,5 @@ public class ProjectDTO {
 	
 	private LocalDateTime modifiedDate;
 	
-	private List<MultimediaDTO> multimedia;
+	private List<MultimediaDto> multimedia;
 }

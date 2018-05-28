@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import lombok.Data;
 
 @Data
-public class MultimediaDTO {
+public class MultimediaDto {
 	
 	private String id;
 
