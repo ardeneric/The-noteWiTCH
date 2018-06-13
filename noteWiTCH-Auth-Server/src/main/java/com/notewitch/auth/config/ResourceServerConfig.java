@@ -27,7 +27,7 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter{
 	public void configure(WebSecurity web) throws Exception{
 		web
 		.ignoring()
-		.antMatchers("/css/**", "/fonts/**", "/img/**", "/js/**", "/sass/**");
+		.antMatchers("/css/**", "/fonts/**", "/img/**", "/js/**", "/sass/**", "/signup/**");
 	}
 	
 	@Override
@@ -36,7 +36,7 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter{
 				.and()
 				.csrf().disable()
 				.requestMatchers()
-				.antMatchers("/login","/oauth/authorize", "/oauth/confirm_access", "/exit","/signup")
+				.antMatchers("/login","/oauth/authorize", "/oauth/confirm_access", "/exit", "/signup")
 				.and()
 				.authorizeRequests()
 				.anyRequest()
