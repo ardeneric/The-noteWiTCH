@@ -27,7 +27,7 @@ public class HomeController {
 	public String home() {
 		return "index";
 	}
-
+	
 	@GetMapping("/groups")
 	public String groups() {
 		return "groups";
